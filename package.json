@@ -1,0 +1,28 @@
+{
+  "name": "team_profile_generator",
+  "version": "1.0.0",
+  "description": "Generate employees to HTML",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "test": "npm run test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DrZimmer/Team_Profile_Generator.git"
+  },
+  "author": "Daniel Zimmermann",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/DrZimmer/Team_Profile_Generator/issues"
+  },
+  "homepage": "https://github.com/DrZimmer/Team_Profile_Generator#readme",
+  "dependencies": {
+    "inquirer": "^8.2.0"
+  },
+  "devDependencies": {
+    "jest": "^27.4.7"
+  }
+}
