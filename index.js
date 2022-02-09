@@ -75,7 +75,7 @@ function appMenu() { //change this name appMenu
           } else if (answer = "Intern") { 
             addIntern()
           } else {
-            //generate html function (creatTeam?)
+            createTeam();
           }
         }
       },
@@ -225,3 +225,6 @@ function appMenu() { //change this name appMenu
   };
 };
 
+function createTeam() {
+ //generate the html
+};
