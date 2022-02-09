@@ -4,19 +4,21 @@
 const Manager = require('./lib/Manager');
 const Engineer = require('./lib/Engineer');
 const Intern = require('./lib/Intern');
+const generatePage = require('./src/page-template');
 const inquirer = require('inquirer');
 const path = require('path'); //maybe use path for determining engineer,intern, or quit?
 const fs = require('fs');
 
 const outputDIR = path.resolve(__dirname, "output"); // not finished, syntax?
-const outputPath = path.join(outputDIR, "team.html"); //not sure if this is correct?
+const outputPath = path.join(outputDIR, "./dist/team.html"); //not sure if this is correct?
 
 const render = require('./src/page-template.js');
+const { toUnicode } = require('punycode');
 
 const teamMembers = [];
 const idArray = [];
 
-function appMenu() { //change this name appMenu
+function employeeCreator() {
 
   function createManager() {
     console.log("Please begin to create your team.");
@@ -224,6 +226,29 @@ function appMenu() { //change this name appMenu
     ]);
   };
 };
+
+// writing files
+const writeFile = fileContent => {
+  return new Promise((resolve, reject) => {
+    fs.writeFile('./dist/index.html', fileContent, err => {
+      if (err) {
+        reject(err);
+        return;
+      }
+
+      resolve({
+        ok: true,
+        message: 'File created!'
+      });
+    });
+  });
+};
+
+//TODO
+
+employeeCreator()
+  .then(createManager)
+  .then()
 
 function createTeam() {
  //generate the html
