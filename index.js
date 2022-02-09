@@ -47,7 +47,7 @@ function appMenu() { //change this name appMenu
       {
         type: "input",
         name: "managerEmail",
-        message: "",
+        message: "What is the team manager's email?",
         validate: answer => {
           if (answer !== '') {
             return true;
@@ -57,7 +57,7 @@ function appMenu() { //change this name appMenu
       {
         type: "input",
         name: "managerOfficeNumber",
-        message: "",
+        message: "What is the team manager's office number?",
         validate: answer => {
           if (answer !== '') {
             return true;
@@ -68,11 +68,11 @@ function appMenu() { //change this name appMenu
         type: "list",
         name: "whichType",
         message: "Which type of team member would you like to add?",
-        choices: ["Engineer", "Intern"], //not sure if syntax is right here
+        choices: ["Engineer", "Intern"], 
         validate: answer => {
           if (answer == "Engineer") {
             addEngineer()
-          } else if (answer = "Intern") { //syntax wrong?
+          } else if (answer = "Intern") { 
             addIntern()
           } else {
             //generate html function (creatTeam?)
@@ -135,22 +135,93 @@ function appMenu() { //change this name appMenu
           } else return ""
         }
       },
+      {
+        type: "list",
+        name: "whichType",
+        message: "Which type of team member would you like to add?",
+        choices: ["Engineer", "Intern"], 
+        validate: answer => {
+          if (answer == "Engineer") {
+            addEngineer()
+          } else if (answer = "Intern") { 
+            addIntern()
+          } else {
+            createTeam();
+          }
+        }
+      },
+    ]);
+  };
+
+  function addIntern() {
+    inquirer.prompt([
+      {
+        type: "input",
+        name: "internName",
+        message: "What is your intern's name?",
+        validate: answer => {
+          if (answer !== '') {
+            return true;
+          } else return "Please enter at least one character for the name"
+        }
+      },
+      {
+        type: "input",
+        name: "internId",
+        message: "What is your intern's id?",
+        validate: answer => {
+          const pass = answer.match(
+            /^[1-9]\d*$/ //might have to change or remove this later this will require chars 1-9
+          );
+          if (pass) {
+            if (idArray.includes(answer)) {
+              return "This ID is already taken. Please enter a different ID number";
+            } else {
+              return true;
+            }
+          }
+          return "Please enter a positive number greater than 0."
+        }
+      },
+      {
+        type: "input",
+        name: "internEmail",
+        message: "What is your intern's email?",
+        validate: answer => {
+          //const pass = answer.match(
+            // /\$+@\$+\.\S+/  no idea will have to google this
+          // ) if pass return true
+          if (answer !== '') {
+            return true;
+          } else return ""
+        }
+      },
+      {
+        type: "input",
+        name: "internGithub",
+        message: "What is your intern's Github username?",
+        validate: answer => {
+          if (answer !== '') {
+            return true;
+          } else return ""
+        }
+      },
+      {
+        type: "list",
+        name: "whichType",
+        message: "Which type of team member would you like to add?",
+        choices: ["Engineer", "Intern"], 
+        validate: answer => {
+          if (answer == "Engineer") {
+            addEngineer()
+          } else if (answer = "Intern") { 
+            addIntern()
+          } else {
+            createTeam();
+          }
+        }
+      },
     ]);
   };
 };
 
-//What is the team manager's name?
-//What is the team manager's id?
-//What is the team manager's email?
-//What is the team manager's office number?
-//Which type of team member would you like to add? Engineer or Intern (if no then done)
-
-//What is your engineer's name?
-//What is your engineer's id?
-//What is your engineer's email?
-//What is your engineer's Github Username?
-
-//What is your interns name?
-//What is your interns id?
-//What is your interns email?
-//What is your interns Github Username?
