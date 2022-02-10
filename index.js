@@ -234,6 +234,7 @@ function employeeCreator() {
       },
     ]);
   };
+  return createManager();
 };
 
 // writing files
@@ -256,7 +257,7 @@ const writeFile = fileContent => {
 //TODO 
 function createTeam() {
 
-  employeeCreator.createManager()
+  employeeCreator()
   .then(portfolioData => {
     return render(portfolioData);
   })
