@@ -200,8 +200,8 @@ function employeeCreator() {
       },
       {
         type: "input",
-        name: "internGithub",
-        message: "What is your intern's Github username?",
+        name: "internSchool",
+        message: "What is your intern's school?",
         validate: answer => {
           if (answer !== '') {
             return true;

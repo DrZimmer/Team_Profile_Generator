@@ -45,7 +45,7 @@ const generateEngineer = engineerInfo => {
 const generateIntern = internInfo => {
   return `
       ${internInfo
-        .map(({ internName, internId, internEmail, internGithub }) => {
+        .map(({ internName, internId, internEmail, internSchool }) => {
           return `
           <div class="col-12 col-md-6 mb-2 bg-dark text-light p-3 flex-column">
             <h3 class="portfolio-item-title text-light">${internName}</h3>
@@ -53,7 +53,7 @@ const generateIntern = internInfo => {
               ID: ${internId}
             </h5>
             <p>${internEmail}</p>
-            <p>${internGithub}</p>
+            <p>${internSchool}</p>
           </div>
         `;
         })
