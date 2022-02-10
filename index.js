@@ -1,19 +1,16 @@
 const Manager = require('./lib/Manager');
 const Engineer = require('./lib/Engineer');
 const Intern = require('./lib/Intern');
-const generatePage = require('./src/page-template');
 const inquirer = require('inquirer');
-const path = require('path'); //maybe use path for determining engineer,intern, or quit?
+const path = require('path');
 const fs = require('fs');
-
-const outputDIR = path.resolve(__dirname, "output"); // not finished, syntax?
-const outputPath = path.join(outputDIR, "./dist/team.html"); //not sure if this is correct?
-
 const render = require('./src/page-template.js');
-const { toUnicode } = require('punycode');
 
-const teamMembers = [];
-const idArray = [];
+const teamMembers = []; //TODO figure out how this goes into inquirer?
+const idArray = []; // see other todos
+
+const outputDIR = path.resolve(__dirname, "output");
+const outputPath = path.join(outputDIR, "./dist/team.html");
 
 function employeeCreator() {
 
@@ -27,7 +24,8 @@ function employeeCreator() {
         validate: answer => {
           if (answer !== '') {
             return true;
-          } else return "Please enter at least one character for the name"
+          }
+          return "Please enter at least one character for the name"
         }
       },
       {
@@ -36,11 +34,13 @@ function employeeCreator() {
         message: "What is the team manager's id?",
         validate: answer => {
           const pass = answer.match(
-            /^[1-9]\d*$/ //might have to change or remove this later this will require chars 1-9
+            /^[1-9]\d*$/ // this will require chars 1-9
           );
           if (pass) {
-            //condition if answer passes, return answer?
-          } else return false; //might be wrong here
+            // TODO add to teamMembers array 
+            return true;
+          } 
+          return "Please enter numbers for the id"
         }
       },
       {
@@ -50,7 +50,8 @@ function employeeCreator() {
         validate: answer => {
           if (answer !== '') {
             return true;
-          } else return ""
+          } 
+          return "Please enter the team manager's email address."
         }
       },
       {
@@ -60,7 +61,8 @@ function employeeCreator() {
         validate: answer => {
           if (answer !== '') {
             return true;
-          } else return ""
+          }
+          return "Please enter the team manager's office number."
         }
       },
       {
@@ -71,7 +73,7 @@ function employeeCreator() {
         validate: answer => {
           if (answer == "Engineer") {
             addEngineer()
-          } else if (answer = "Intern") { 
+          } else if (answer == "Intern") { 
             addIntern()
           } else {
             createTeam();
@@ -90,7 +92,8 @@ function employeeCreator() {
         validate: answer => {
           if (answer !== '') {
             return true;
-          } else return "Please enter at least one character for the name"
+          }
+          return "Please enter at least one character for the name"
         }
       },
       {
@@ -99,12 +102,13 @@ function employeeCreator() {
         message: "What is your engineer's id?",
         validate: answer => {
           const pass = answer.match(
-            /^[1-9]\d*$/ //might have to change or remove this later this will require chars 1-9
+            /^[1-9]\d*$/ //this will require chars 1-9
           );
           if (pass) {
             if (idArray.includes(answer)) {
               return "This ID is already taken. Please enter a different ID number";
             } else {
+              // TODO add to teamMembers array
               return true;
             }
           }
@@ -116,12 +120,15 @@ function employeeCreator() {
         name: "engineerEmail",
         message: "What is your engineer's email?",
         validate: answer => {
-          //const pass = answer.match(
-            // /\$+@\$+\.\S+/  no idea will have to google this
-          // ) if pass return true
-          if (answer !== '') {
+          const pass = answer.match(
+            /\$+@\$+\.\S+/ //this will require email
+          );
+          if (pass) {
+            if (answer !== '') {
             return true;
-          } else return ""
+            }
+          }
+          return "Please enter a valid Email Address."
         }
       },
       {
@@ -161,7 +168,8 @@ function employeeCreator() {
         validate: answer => {
           if (answer !== '') {
             return true;
-          } else return "Please enter at least one character for the name"
+          } 
+          return "Please enter at least one character for the name"
         }
       },
       {
@@ -170,7 +178,7 @@ function employeeCreator() {
         message: "What is your intern's id?",
         validate: answer => {
           const pass = answer.match(
-            /^[1-9]\d*$/ //might have to change or remove this later this will require chars 1-9
+            /^[1-9]\d*$/ //this will require chars 1-9
           );
           if (pass) {
             if (idArray.includes(answer)) {
@@ -187,12 +195,15 @@ function employeeCreator() {
         name: "internEmail",
         message: "What is your intern's email?",
         validate: answer => {
-          //const pass = answer.match(
-            // /\$+@\$+\.\S+/  no idea will have to google this
-          // ) if pass return true
-          if (answer !== '') {
+          const pass = answer.match(
+            /\$+@\$+\.\S+/ //this will require email
+          );
+          if (pass) {
+            if (answer !== '') {
             return true;
-          } else return ""
+            }
+          }
+          return "Please enter a valid Email Address."
         }
       },
       {
@@ -202,7 +213,8 @@ function employeeCreator() {
         validate: answer => {
           if (answer !== '') {
             return true;
-          } else return ""
+          }
+          return "Please enter your intern's school."
         }
       },
       {
@@ -241,12 +253,19 @@ const writeFile = fileContent => {
   });
 };
 
-//TODO
-
-employeeCreator()
-  .then(createManager)
-  .then()
-
+//TODO 
 function createTeam() {
- //generate the html
+
+  employeeCreator.createManager()
+  .then(portfolioData => {
+    return render(portfolioData);
+  })
+  .then(pageHTML => {
+    return writeFile(pageHTML);
+  })
+  .catch(err => {
+    console.log(err);
+  });
 };
+
+createTeam();
