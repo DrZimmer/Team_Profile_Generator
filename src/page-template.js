@@ -1,67 +1,67 @@
 //Generate the html here
 
-const generateManager = managerInfo => {
-  return `
-      ${managerInfo
-        .map(({ managerName, managerId, managerEmail, managerOfficeNumber }) => {
-          return `
-          <div class="col-12 col-md-6 mb-2 bg-dark text-light p-3 flex-column">
-            <h3 class="portfolio-item-title text-light">${managerName}</h3>
-            <h5 class="portfolio-languages">
-              ID: ${managerId}
-            </h5>
-            <p>${managerEmail}</p>
-            <p>${managerOfficeNumber}</p>
-          </div>
-        `;
-        })
-        .join('')}
-      </div>
-    </section>
-  `;
-};
+// const generateManager = managerInfo => {
+//   return `
+//       ${managerInfo
+//         .map(({ managerName, managerId, managerEmail, managerOfficeNumber }) => {
+//           return `
+//           <div class="col-12 col-md-6 mb-2 bg-dark text-light p-3 flex-column">
+//             <h3 class="portfolio-item-title text-light">${managerName}</h3>
+//             <h5 class="portfolio-languages">
+//               ID: ${managerId}
+//             </h5>
+//             <p>${managerEmail}</p>
+//             <p>${managerOfficeNumber}</p>
+//           </div>
+//         `;
+//         })
+//         .join('')}
+//       </div>
+//     </section>
+//   `;
+// };
 
-const generateEngineer = engineerInfo => {
-  return `
-      ${engineerInfo
-        .map(({ engineerName, engineerId, engineerEmail, engineerGithub }) => {
-          return `
-          <div class="col-12 col-md-6 mb-2 bg-dark text-light p-3 flex-column">
-            <h3 class="portfolio-item-title text-light">${engineerName}</h3>
-            <h5 class="portfolio-languages">
-              ID: ${engineerId}
-            </h5>
-            <p>${engineerEmail}</p>
-            <p>${engineerGithub}</p>
-          </div>
-        `;
-        })
-        .join('')}
-      </div>
-    </section>
-  `;
-};
+// const generateEngineer = engineerInfo => {
+//   return `
+//       ${engineerInfo
+//         .map(({ engineerName, engineerId, engineerEmail, engineerGithub }) => {
+//           return `
+//           <div class="col-12 col-md-6 mb-2 bg-dark text-light p-3 flex-column">
+//             <h3 class="portfolio-item-title text-light">${engineerName}</h3>
+//             <h5 class="portfolio-languages">
+//               ID: ${engineerId}
+//             </h5>
+//             <p>${engineerEmail}</p>
+//             <p>${engineerGithub}</p>
+//           </div>
+//         `;
+//         })
+//         .join('')}
+//       </div>
+//     </section>
+//   `;
+// };
 
-const generateIntern = internInfo => {
-  return `
-      ${internInfo
-        .map(({ internName, internId, internEmail, internSchool }) => {
-          return `
-          <div class="col-12 col-md-6 mb-2 bg-dark text-light p-3 flex-column">
-            <h3 class="portfolio-item-title text-light">${internName}</h3>
-            <h5 class="portfolio-languages">
-              ID: ${internId}
-            </h5>
-            <p>${internEmail}</p>
-            <p>${internSchool}</p>
-          </div>
-        `;
-        })
-        .join('')}
-      </div>
-    </section>
-  `;
-};
+// const generateIntern = internInfo => {
+//   return `
+//       ${internInfo
+//         .map(({ internName, internId, internEmail, internSchool }) => {
+//           return `
+//           <div class="col-12 col-md-6 mb-2 bg-dark text-light p-3 flex-column">
+//             <h3 class="portfolio-item-title text-light">${internName}</h3>
+//             <h5 class="portfolio-languages">
+//               ID: ${internId}
+//             </h5>
+//             <p>${internEmail}</p>
+//             <p>${internSchool}</p>
+//           </div>
+//         `;
+//         })
+//         .join('')}
+//       </div>
+//     </section>
+//   `;
+// };
 
 module.exports = templateData => {
   const { manager, engineer, intern, ...header } = templateData;
@@ -98,3 +98,5 @@ module.exports = templateData => {
   </html>
   `;
 }
+
+module.exports = generateTeamHTML;
