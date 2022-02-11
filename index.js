@@ -65,7 +65,7 @@ function createManager() {
       },
     ])
     .then((resp) => {
-      //TODO: Create a manager constructor
+      // Create a manager constructor
       const manager = new Manager(resp.managerName, resp.managerId, resp.managerEmail, resp.managerOfficeNumber);
       //Add constructor to teamMembers
       teamMembers.push(manager);
@@ -130,7 +130,7 @@ function addEngineer() {
       },
     ])
     .then((resp) => {
-      //TODO: Create a engineer constructor
+      // Create a engineer constructor
       const engineer = new Engineer(resp.engineerName, resp.engineerId, resp.engineerEmail, resp.engineerGithub);
       //Add constructor to teamMembers
       teamMembers.push(engineer);
@@ -196,7 +196,7 @@ function addIntern() {
       },
     ])
     .then((resp) => {
-      //TODO: Create an intern constructor
+      //Create an intern constructor
       const intern = new Intern(resp.internName, resp.internId, resp.internEmail, resp.internSchool);
       //Add constructor to teamMembers
       teamMembers.push(intern);
