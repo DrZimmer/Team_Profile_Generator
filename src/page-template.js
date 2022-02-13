@@ -10,7 +10,9 @@ function generateTeamMembers(data) {
       </div>
       <div class="employeeBody">
         <p><b>Id:</b> ${manager.id}</p>
-        <p><b>Email:</b> ${manager.email}</p>
+        <p><b>Email:</b> 
+          <a href="mailto:${manager.email}">${manager.email}</a>
+        </p>
         <p><b>Office Number:</b> ${manager.officeNumber}</p>
       </div>
     </div>
@@ -26,8 +28,12 @@ function generateTeamMembers(data) {
         </div>
         <div class="employeeBody">
           <p><b>Id:</b> ${engineer.id}</p>
-          <p><b>Email:</b> ${engineer.email}</p>
-          <p><b>Github:</b> ${engineer.github}</p>
+          <p><b>Email:</b> 
+            <a href="mailto:${engineer.email}">${engineer.email}</a>
+          </p>
+          <p><b>Github:</b> 
+            <a href="https://github.com/${engineer.github}"> ${engineer.github}</a>
+          </p>
         </div>
       </div>
     `;
@@ -42,7 +48,9 @@ function generateTeamMembers(data) {
         </div>
         <div class="employeeBody">
           <p><b>Id:</b> ${intern.id}</p>
-          <p><b>Email:</b> ${intern.email}</p>
+          <p><b>Email:</b> 
+            <a href="mailto:${intern.email}">${intern.email}</a>
+          </p>
           <p><b>School:</b> ${intern.school}</p>
         </div>
       </div>

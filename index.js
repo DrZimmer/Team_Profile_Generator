@@ -9,9 +9,6 @@ const render = require("./src/page-template.js");
 const teamMembers = []; 
 const idArray = [];
 
-const outputDIR = path.resolve(__dirname, "output");
-const outputPath = path.join(outputDIR, "./dist/team.html");
-
 function createManager() {
   console.log("Please begin to create your team.");
   inquirer
@@ -228,18 +225,8 @@ function employeeCreator() {
     });
 }
 
-//TODO
 function createTeam() {
-  //   .then((portfolioData) => {
-  //     return render(portfolioData);
-  //   })
-  //   .then((pageHTML) => {
-  //     return writeFile(pageHTML);
-  //   })
-  //   .catch((err) => {
-  //     console.log(err);
-  //   });
-
+  
   fs.writeFile("./dist/index.html", render(teamMembers), (err) => {
     if (err) {
       console.log("err", err);
