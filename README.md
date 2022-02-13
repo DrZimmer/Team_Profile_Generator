@@ -29,6 +29,8 @@ This project is licensed under mit
 npm install and npm install inquirer
 You can create as many engineers / interns as you want, but only one manager per team.
 
+Walkthrough video: https://drive.google.com/file/d/1wNGPAmEjRLoK9gRvt8YA6fsiMTOgatLR/view
+
 ## Contributing
 
 Submit Pull Requests if you'd like to improve this project.
