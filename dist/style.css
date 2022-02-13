@@ -1,1 +1,43 @@
-/*output html also goes in this folder*/
+.eName {
+  color: white;
+  font-size: 2em;
+  text-align: center;
+}
+
+.jobRole {
+  color: white;
+  font-size: 1.4em;
+  text-align: center;
+  margin-top: 5px;
+}
+
+.pageTitle {
+  display: flex;
+  justify-content: center;
+  color: white;
+  background-color: black;
+  font-weight: bold;
+  font-size: 3em;
+  padding: 40px;
+}
+
+.mainContainer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+
+.employeeBorder {
+  border-style: solid;
+  margin: 20px;
+}
+.employeeHeader {
+  display: flex;
+  flex-direction: column;
+  background-color: black;
+  padding: 10px;
+}
+.employeeBody {
+  margin: 10px;
+  padding: 10px;
+}
